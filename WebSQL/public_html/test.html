@@ -1,0 +1,79 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="jquery-2.0.3.min.js"></script>
+        <link rel="stylesheet" href="db.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div class="status">Test<br></div>
+        <script>
+            var phreebie={};
+            phreebie.init = function() {
+                /**
+                 * customerDb - URL по которому запрашиваются файлы базы данных в формате json
+                 */
+                phreebie.customerDb = "http://interactivefishing.tv";
+                /**
+                 * customerHost - URL сайта
+                 */
+                phreebie.customerHost = "http://interactivefishing.tv";
+                /**
+                 * customerName - имя организации
+                 */
+                phreebie.customerName = "MasterGraund";
+                /**
+                 * customerShortDescription - аннотация к продукту
+                 */
+                phreebie.customerShortDescription = "Каталог товаров MasterGraund";
+                /**
+                 * Версия продукта, +0.1 при измеении БД и +1.0 при изменении программы
+                 */
+                phreebie.customerVersion = "0.1";
+                /*
+                 * customerDbSize - размер БД 
+                 */
+                phreebie.customerDbSize = 2000000;
+            }
+            
+            $(document).ready(function(){
+                phreebie.init();
+                phreebie.db = openDatabase("Product", phreebie.customerVersion, phreebie.customerShortDescription, phreebie.customerDbSize);
+                phreebie.db.transaction(function(tx) {
+                    tx.executeSql("SELECT COUNT(*) FROM Product", [], null, function (tx, error) {
+                    tx.executeSql('CREATE TABLE Product ("КодТовара" REAL UNIQUE, "Товар" TEXT, "Масса" REAL, "КоличествоВКоробке" INTEGER, "ОстатокНаСкладе" INTEGER, "Сортировка" INTEGER, "Переход" INTEGER, "ГруппаТовара" INTEGER, "КоличествоБонусаТоварного" INTEGER, "ПроцентБонусаТоварного" REAL, "ID_Поставщик" INTEGER, "ЦенаЗакупки" REAL, "НачальныйОстаток" REAL, "ПРОБА" TEXT, "Факт1" INTEGER, "Свободный1" INTEGER, "Инвентура" INTEGER, "Факт2" INTEGER, "Свободный2" INTEGER)', [], null, null);
+                    });});
+                
+                phreebie.db1 = openDatabase("Ordered", phreebie.customerVersion, phreebie.customerShortDescription, phreebie.customerDbSize);
+                phreebie.db1.transaction(function(tx) {
+                    tx.executeSql("SELECT COUNT(*) FROM Ordered", [], null, function (tx, error) {
+                    tx.executeSql('CREATE TABLE Ordered ("Номер" REAL UNIQUE, "Время" REAL, "Сумма" REAL, "Статус" TEXT)', [], null, null);
+                    });});
+
+                phreebie.db2 = openDatabase("Order", phreebie.customerVersion, phreebie.customerShortDescription, phreebie.customerDbSize);
+                phreebie.db2.transaction(function(tx) {
+                    tx.executeSql("SELECT COUNT(*) FROM Order", [], null, function (tx, error) {
+                    tx.executeSql('CREATE TABLE Order (id REAL UNIQUE, "НомерЗаказа" TEXT, "КодТовара" REAL, "Количество" REAL)', [], null, null);
+                    });});
+                
+                phreebie.db3 = openDatabase("Favorites", phreebie.customerVersion, phreebie.customerShortDescription, phreebie.customerDbSize);
+                phreebie.db3.transaction(function(tx) {
+                    tx.executeSql("SELECT COUNT(*) FROM Favorites", [], null, function (tx, error) {
+                    tx.executeSql('CREATE TABLE Favorites (id REAL UNIQUE, "КодТовара" REAL)', [], null, null);
+                    });});
+                
+                phreebie.db4 = openDatabase("MasterGraund", phreebie.customerVersion, phreebie.customerShortDescription, phreebie.customerDbSize);
+                phreebie.db4.transaction(function(tx) {
+                    tx.executeSql("SELECT COUNT(*) FROM MasterGraund", [], null, function (tx, error) {
+                    tx.executeSql("CREATE TABLE MasterGraund (id REAL UNIQUE, LastUpdate REAL)", [], null, null);
+                    });});
+                
+            });
+        </script>
+    </body>
+</html>

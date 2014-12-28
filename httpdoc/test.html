@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пример</title>
+    <meta charset="utf-8">
+    <script src="jquery-2.0.3.min.js"></script>
+    <script src="jquery.tmpl.js" type="text/javascript"></script>
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        var data = new Array();
+        /**
+         * name,p0 = номер заказа
+         * p1 = orderDate
+         * p2 = customerName
+         * p3 = customerPhone
+         * p4 = customerInfo
+         * p5 = customerEmail
+         * p6 = orderSum
+         */
+        data[data.length] = { name: "00232546", p0: "00232546", p1: "order", p2: "09.12.2013", p3: "+79027800807", p4:"В подъезде домофон",p5:"juhnowski@gmail.com",p6:"1001.52",p7:"Юхновский Илья Александрович"};
+        /**
+         * name = тип = product
+         * p1 = ID
+         * p2 = Арт Наименование
+         * p3 =  количество
+         * p4 =  цена
+         * p5 = суммма
+         */
+        data[data.length] = { name: "1", p0:"1", p1: "product1", p2: "001 Астры", p3: "10", p4:"1.20", p5:"12",p6:"-",p7:"-"};
+        data[data.length] = { name: "2", p0:"2", p1: "product2", p2: "1021 Нарциссы", p3: "2", p4:"2", p5:"4",p6:"-",p7:"-"};
+        data[data.length] = { name: "60", p0:"60", p1: "product3", p2: "6003 Розы", p3: "4", p4:'4',p5:"16",p6:"-",p7:"-"};
+        data[data.length] = { name: "90", p0:"90", p1: "product4", p2: "002 Пионы", p3: "1", p4:"1", p5:"1",p6:"-",p7:"-"};
+        data[data.length] = { name: "113", p0:"113", p1: "product5", p2: "1213 Примулы", p3: "3", p4:"5", p5:"15",p6:"-",p7:"-"};
+                
+        var templResult = $('#orderTmpl').tmpl(data);
+        templResult.appendTo('#row_name');
+        templResult.appendTo("#row_cnt");
+    });
+</script>
+                    
+<script id="orderTmpl" type="text/x-jquery-tmpl">
+    <div class="dcel1">
+        <label for="${p1}">${name}:</label>
+        <input name="${p1}" value="${p0}|${p1}|${p2}|${p3}|${p4}|${p5}|${p6}|${p7}" required/>
+    </div>
+    
+</script>
+</head>
+<body>
+    <h1>Цветочный магазин Джеки</h1>
+    <form method="post" action = "http://interactivefishing.tv:9080/order">
+        <div id="oblock">
+            <div class="dtable">
+                <div id="row_name" class="drow"></div>
+                <div id="row_cnt" class="drow"></div>
+            </div>
+        </div>
+        <div id="buttonDiv">
+            <button type="submit">Заказать</button>
+        </div>
+    </form>
+<script>
+$( "tr:odd" ).css( "background-color", "#bbbbff" );
+</script>    
+</body>
+</html>

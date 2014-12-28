@@ -1,0 +1,10 @@
+D:\src_w\Db2JSON\Db2JSON\bin\Debug\Db2JSON.exe.config
+D:\src_w\Db2JSON\Db2JSON\bin\Debug\MG-WEB-2003.mdb
+D:\src_w\Db2JSON\Db2JSON\bin\Debug\Db2JSON.exe
+D:\src_w\Db2JSON\Db2JSON\bin\Debug\Db2JSON.pdb
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.Form1.resources
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.Properties.Resources.resources
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.csproj.GenerateResource.Cache
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.exe
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.pdb
+D:\src_w\Db2JSON\Db2JSON\obj\Debug\Db2JSON.csprojResolveAssemblyReference.cache
